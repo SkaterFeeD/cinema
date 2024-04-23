@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\ApiException;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UserCreateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +15,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         $user = User
-            ::where('login',    $request->login)
+            ::where('login', $request->login)
             ->where('password', $request->password)
             ->first();
 

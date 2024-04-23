@@ -23,7 +23,7 @@ class LoginRequest extends ApiRequest
     {
         return [
             'login'   => 'required|string|min:5|max:32',
-            'password' => 'required|string|max:32',
+            'password' => 'required|string|min:8|max:32',
         ];
     }
     public function messages()

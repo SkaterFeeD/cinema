@@ -2,36 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ApiException;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function signUp(AuthRequest $request){
+    public function this() {
+        $user = auth()->user();
 
         return response()->json([
-            'success' => true,
-            'code' => 201,
-            'message' => 'Success',
-            'token' => User::create($request->all())->generateToken()
-        ])->setStatusCode(201);
+            'data' => $user
+        ]);
     }
-    public function login(LoginRequest $request) {
-        $credentials = request(['email', 'password']);
-
-        if (!Auth::attempt($credentials)) {
-            throw new ApiException(401, 'Authorization failed');
-        }
-
-        return response()->json([
-            'success' => true,
-            'code' => 200,
-            'message' => 'Success',
-            'token' => Auth::user()->generateToken()
-        ])->setStatusCode(200);
-    }
-
-
-    public function logout(Request $request) {
-        $request->user()->forceFill(['remember_token' => ''])->save();
+    public function show(int $id) {
+        $user = User::find($id);
+        if(!$user) throw new ApiException(404, 'Пользователь не найден');
+        return response([
+            'data' => $user,
+        ]);
     }
 }
