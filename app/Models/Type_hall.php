@@ -10,4 +10,8 @@ class Type_hall extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function hall(){
+        return $this->hasMany(Hall::class);
+    }
 }

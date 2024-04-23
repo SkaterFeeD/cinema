@@ -14,6 +14,15 @@ class User extends Model
     // Прячем
     protected $hidden = ['password'];
 
-    
-
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
+    public function ticket(){
+        return $this->hasMany(Ticket::class);
+    }
+    public function order(){
+        return $this->hasMany(Order::class);
+    }
+    // belongsTo - цепляемся
+    // hasMany - присасывается
 }

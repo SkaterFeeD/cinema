@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name', 128);
             $table->string('duration', 32);
+            $table->text('description');
+            $table->integer('year');
+            $table->string('country', 32);
+            $table->string('director', 32);
 
             $table->foreignId('genre_id')->constrained()->onUpdate('cascade');
 

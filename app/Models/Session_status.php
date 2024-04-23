@@ -10,4 +10,8 @@ class Session_status extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function session(){
+        return $this->hasMany(Session::class);
+    }
 }
