@@ -27,7 +27,7 @@ class UserCreateRequest extends ApiRequest
             'patronymic' => 'string|min:1|max:32|nullable',
             'phone_number' => 'required|string|min:6|max:12|unique:users,phone_number',
             'birth' => 'required|date',
-            'login' => 'required|string|min:5|max:32',
+            'login' => 'required|string|min:5|max:32|unique:users,login',
             'password' => 'required|string|min:8|max:32',
             'email' => 'required|email|min:5|max:32|unique:users,email',
         ];
@@ -47,12 +47,14 @@ class UserCreateRequest extends ApiRequest
             'patronymic.max' => 'Поле "Отчество" должно содержать не менее :max символов.',
 
             'phone_number.required' => 'Поле "Телефон" обязательно для заполнения.',
-            'phone_number.digits_between' => 'Поле "Телефон" должно содержать от :min до :max цифр.',
             'phone_number.unique' => 'Такой "Телефон" уже существует.',
+            'phone_number.min' => 'Поле "Телефон" должно содержать не менее :min символов.',
+            'phone_number.max' => 'Поле "Телефон" должно содержать не менее :max символов.',
 
             'birth.required' => 'Поле "Дата рождения" обязательно для заполнения.',
 
             'login.required' => 'Поле "Логин" обязательно для заполнения.',
+            'login.unique' => 'Такой "Логин" уже существует.',
             'login.min' => 'Поле "Логин" должно содержать не менее :min символов.',
             'login.max' => 'Поле "Логин" должно содержать не более :max символов.',
 

@@ -21,6 +21,7 @@ class AuthController extends Controller
 
         if (!$user) throw new ApiException(401, 'Ошибка аутентификации');
 
+        // Создание токена
         $newToken = Hash::make(microtime(true) * 1000);
 
         $user->api_token = $newToken;
@@ -29,7 +30,16 @@ class AuthController extends Controller
         return response()->json([
             'data' => [
                 'api_token' => $user->api_token,
-            ],
+                'name' => $user->name,
+                'surname' => $user->surname,
+                'patronymic' => $user->patronymic,
+                'phone_number' => $user->phone_number,
+                'password' => $user->password,
+                'birth' => $user->birth,
+                'login' => $user->login,
+                'email' => $user->email,
+                'role_id' => $user->role_id,
+            ]
         ]);
     }
     public function logout(Request $request) {

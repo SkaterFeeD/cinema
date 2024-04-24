@@ -26,6 +26,8 @@ Route::post('/login' , [AuthController::class, 'login' ]);
 //  Выход
 Route::middleware('auth:api')->get('/logout', [AuthController::class, 'logout']);
 
+// Функционал администратора
+
 
 
 

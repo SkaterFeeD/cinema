@@ -27,7 +27,7 @@ class UserUpdateRequest extends ApiRequest
             'patronymic' => 'string|min:1|max:32|nullable',
             'phone_number' => 'string|min:6|max:12|unique',
             'birth' => 'date',
-            'login' => 'string|min:5|max:32',
+            'login' => 'string|min:5|max:32|unique',
             'password' => 'string|min:8|max:32',
             'email' => 'email|min:5|max:32|unique',
         ];
@@ -44,11 +44,13 @@ class UserUpdateRequest extends ApiRequest
             'patronymic.min' => 'Поле "Отчество" должно содержать не менее :min символов.',
             'patronymic.max' => 'Поле "Отчество" должно содержать не менее :max символов.',
 
-            'phone_number.digits_between' => 'Поле "Телефон" должно содержать от :min до :max цифр.',
             'phone_number.unique' => 'Такой "Телефон" уже существует.',
+            'phone_number.min' => 'Поле "Телефон" должно содержать не менее :min символов.',
+            'phone_number.max' => 'Поле "Телефон" должно содержать не менее :max символов.',
 
             'login.min' => 'Поле "Логин" должно содержать не менее :min символов.',
             'login.max' => 'Поле "Логин" должно содержать не более :max символов.',
+            'login.unique' => 'Такой "Логин" уже существует.',
 
             'password.min' => 'Поле "Пароль" должно содержать не менее :min символов.',
             'password.max' => 'Поле "Пароль" должно содержать не более :max символов.',
