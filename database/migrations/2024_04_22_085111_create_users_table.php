@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('email', 32)->unique();
             $table->string('api_token')->unique()->nullable();
 
-            $table->foreignId('role_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('role_id')->default(1)->constrained()->onUpdate('cascade');
 
             $table->timestamps();
 

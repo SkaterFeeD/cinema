@@ -25,11 +25,11 @@ class UserCreateRequest extends ApiRequest
             'name' => 'required|string|min:1|max:32',
             'surname' => 'required|string|min:1|max:32',
             'patronymic' => 'string|min:1|max:32|nullable',
-            'phone_number' => 'required|string|min:6|max:12|unique',
+            'phone_number' => 'required|string|min:6|max:12|unique:users,phone_number',
             'birth' => 'required|date',
             'login' => 'required|string|min:5|max:32',
             'password' => 'required|string|min:8|max:32',
-            'email' => 'required|email|min:5|max:32|unique',
+            'email' => 'required|email|min:5|max:32|unique:users,email',
         ];
     }
     public function messages()
@@ -49,6 +49,8 @@ class UserCreateRequest extends ApiRequest
             'phone_number.required' => 'Поле "Телефон" обязательно для заполнения.',
             'phone_number.digits_between' => 'Поле "Телефон" должно содержать от :min до :max цифр.',
             'phone_number.unique' => 'Такой "Телефон" уже существует.',
+
+            'birth.required' => 'Поле "Дата рождения" обязательно для заполнения.',
 
             'login.required' => 'Поле "Логин" обязательно для заполнения.',
             'login.min' => 'Поле "Логин" должно содержать не менее :min символов.',
