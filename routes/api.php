@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FilmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,12 @@ Route::post('/login' , [AuthController::class, 'login' ]);
 Route::middleware('auth:api')->get('/logout', [AuthController::class, 'logout']);
 
 // Функционал администратора
+
+
+// Просмотр всех фильмов
+Route::get('/film' , [FilmController::class, 'index' ]);
+// Просмотр определенного фильма
+Route::get('/film/{id}' , [FilmController::class, 'show' ]);
 
 
 
